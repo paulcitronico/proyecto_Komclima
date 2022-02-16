@@ -1,12 +1,12 @@
 from flask import Flask
-from routes.index import index
+from routes.root import root
 
 # Instanciar Flask
 app = Flask(__name__)
 
 # Definir las rutas de la aplicación
-app.register_blueprint(index)
+app.register_blueprint(root)
 
-# Levantar o ejecutar la aplicación
+# Ejecutar la aplicación
 if __name__ == "__main__":
-    app.run(debug=True,port=4000)
+    app.run(port=4000)
