@@ -1,7 +1,15 @@
-certifi==2020.6.20
-click==7.1.2
-Flask==1.1.4
-itsdangerous==1.1.0
-Jinja2==2.11.3
-MarkupSafe==1.1.1
-Werkzeug==1.0.1
+certifi==2021.10.8
+click==8.0.3
+Flask==2.0.3
+Flask-MySQL==1.5.2
+Flask-SQLAlchemy==2.5.1
+greenlet==1.1.2
+itsdangerous==2.0.1
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+mysql-connector-python==8.0.28
+mysqlclient @ file:///tmp/build/80754af9/mysqlclient_1609786120714/work
+protobuf==3.19.4
+PyMySQL==1.0.2
+SQLAlchemy==1.4.31
+Werkzeug==2.0.3
