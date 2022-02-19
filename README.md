@@ -16,3 +16,9 @@ Blueprint: root (ruta raíz)
 | --- | --- | --- |
 | GET | / | Redirige a la vista principal. |
 | GET | /recoverPassword | Redirige a la vista para recuperar contraseña. | 
+
+Blueprint: users
+
+| Método | Ruta | Descripción |
+| --- | --- | --- |
+| POST | /users/register | Registra un nuevo usuario, obtiene la información a partir de un form-data (datos de formularios) |
