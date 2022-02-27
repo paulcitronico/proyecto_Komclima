@@ -1,11 +1,3 @@
-import mysql.connector
-from mysql.connector import errorcode
+from flask_sqlalchemy import SQLAlchemy
 
-config = {
-    "user": "admin",
-    "password": "administrador",
-    "host": "localhost",
-    "database": "temperatura"
-}
-
-con = mysql.connector.connect(**config)
+db = SQLAlchemy()

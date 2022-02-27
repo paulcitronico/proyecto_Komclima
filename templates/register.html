@@ -1,0 +1,28 @@
+{% extends 'template_base.html' %}
+
+{% block title %}Registrar{% endblock %}
+
+{% block content %}
+    <section>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            {{ message }}
+            <div class="formItem">
+                {{ form.name(placeholder="Ingrese su nombre") }}
+            </div>
+            <div class="formItem">
+                {{ form.password(placeholder="****") }}
+            </div>
+            <div class="formItem">
+                {{ form.rut(placeholder="Ingrese su rut") }}
+            </div>
+            <div class="formItem">
+                {{ form.email(placeholder="Ingrese su correo") }}
+            </div>
+            <div class="formItem">
+                {{ form.type_user }}
+            </div>
+            {{ form.submit() }}
+        </form>
+    </section>
+{% endblock %}
