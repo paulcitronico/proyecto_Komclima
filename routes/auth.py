@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, url_for, redirect, request, flash
-from flask_login import login_user
+from flask_login import login_required, login_user, logout_user
 from models.Forms.SignUpForm import SignUpForm
 from models.Forms.LoginForm import LoginForm
 from models.user import User
@@ -38,13 +38,18 @@ def _login_user():
             password = form.password.data
 
             user = User.get_by_rut(username)
-            print(user.check_password(password))
 
             if not user or not user.check_password(password):
-                #flash("")
-                return redirect(url_for("root.index"))
+                flash("Usuario y/o contraseña no válida(o).")
+                return redirect("login")
 
             login_user(user=user)
             return redirect("profile")
 
     return redirect(url_for("root.index"))
+
+@auth.route("/logout")
+@login_required
+def _logout_user():
+    logout_user()
+    return redirect("/")
