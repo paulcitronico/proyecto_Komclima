@@ -7,6 +7,7 @@ from models.user import User
 
 app = Flask(__name__)
 login_manager = LoginManager()
+login_manager.login_view = "root.index"
 
 app.config["SECRET_KEY"] = "34a0ac3ff0f2da8c4776b46619bbdfa7b8736263a3601234cf20c1a7d2064879"
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://admin:administrador@localhost/login_example"

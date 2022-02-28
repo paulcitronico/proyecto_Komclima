@@ -4,7 +4,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 class User(db.Model,UserMixin):
     __tablename__ = "users"
-    ID = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.Integer,primary_key=True)
     Name = db.Column(db.String(100),nullable=False)
     Password = db.Column(db.String(255),nullable=False)
     Rut = db.Column(db.String(100),nullable=False, unique=True)
@@ -19,7 +19,7 @@ class User(db.Model,UserMixin):
         self.Type = type
 
     def save(self):
-        if not self.ID:
+        if not self.id:
             db.session.add(self)
         db.session.commit()
 
@@ -39,7 +39,7 @@ class User(db.Model,UserMixin):
         self.password = generate_password_hash(password)
 
     def check_password(self,password):
-        return check_password_hash(self.password,password)
+        return check_password_hash(self.Password,password)
 
     def __repr__(self):
-        return "<User {}>".format(self.rut)
+        return "<User {}>".format(self.Rut)

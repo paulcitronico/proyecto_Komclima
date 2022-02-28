@@ -17,3 +17,5 @@ pip install -r requirements.txt
 | GET | / | Redirige a la vista principal de la aplicación. |
 | GET | /register | Redirige a una vista de registro de usuarios. |
 | POST | /register | Valida los datos del formulario verificando que el correo y el rut no existan en la base de datos. |
+| GET | /login | Redirige a la vista con el formulario de autenticación. |
+| POST | /login | Permite autenticar al usuario. |

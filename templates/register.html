@@ -4,9 +4,15 @@
 
 {% block content %}
     <section>
-        <form action="" method="post" novalidate>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification">
+                {{ messages[0] }}. Ve a <a href="{{ url_for('root.index') }}">iniciar sesión</a>
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form action="/register" method="post">
             {{ form.hidden_tag() }}
-            {{ message }}
             <div class="formItem">
                 {{ form.name(placeholder="Ingrese su nombre") }}
             </div>

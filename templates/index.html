@@ -4,7 +4,7 @@
 
 {% block content %}
     <nav class="navBar">
-        <form action="" method="post" novalidate>
+        <form action="/login" method="post">
             {{ form.hidden_tag() }}
             <div class="navBarItem">
                 {{ form.username.label }}
