@@ -1,12 +1,29 @@
 from flask import Flask
-from routes.index import index
+from routes.root import root
+from routes.auth import auth
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from models.user import User
 
-# Instanciar Flask
 app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.login_view = "root.index"
+login_manager.login_message = "Para acceder a esta ruta, necesita autenticarse."
 
-# Definir las rutas de la aplicación
-app.register_blueprint(index)
+app.config["SECRET_KEY"] = "34a0ac3ff0f2da8c4776b46619bbdfa7b8736263a3601234cf20c1a7d2064879"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://admin:administrador@localhost/login_example"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# Levantar o ejecutar la aplicación
-if __name__ == "__main__":
-    app.run(debug=True,port=4000)
+login_manager.init_app(app)
+SQLAlchemy(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get_by_id(user_id)
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    return "No tiene permisos para acceder a esta ruta"
+
+app.register_blueprint(root)
+app.register_blueprint(auth)

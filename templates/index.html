@@ -1,29 +1,30 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
-    <link rel="stylesheet" href="../static/css/index.css">
-    <script defer src="../static/js/index.js"></script>
-</head>
-<body>
-    <header>
-        <nav class="navBar">
+{% extends 'template_base.html' %}
+
+{% block title %}Demo{% endblock %}
+
+{% block content %}
+    <nav class="navBar">
+        <div class="navBarItem">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {{ messages[0] }}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <form action="/login" method="post">
+            {{ form.hidden_tag() }}
             <div class="navBarItem">
-                <label>Usuario</label>
-                <input class="form-control" type="text" placeholder="Usuario">
+                {{ form.username.label }}
+                {{ form.username(placeholder="Ingrese su rut") }}
             </div>
             <div class="navBarItem">
-                <label>Contraseña</label>
-                <input class="form-control" type="password" placeholder="Contraseña">
+                {{ form.password.label }}
+                {{ form.password(placeholder="Ingrese su contraseña") }}
             </div>
             <div class="navBarItem">
-                <a href="/recoverPassword">¿Ha olvidado la contraseña?</a>
+                <a href="#">¿Ha olvidado la contraseña?</a>
             </div>
-            <button class="btn btn-primary" type="submit">Ingresar</button>
-        </nav>
-    </header>
-</body>
-</html>
+            {{ form.submit(class="btn") }}
+        </form>
+    </nav>
+{% endblock %}
