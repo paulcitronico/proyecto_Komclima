@@ -4,8 +4,14 @@
 
 {% block content %} 
 
-    <h1>Bienvenido</h1>
+    <h1>Bienvenido, {{ current_user.Name }}</h1>
 
     <a href="/logout">Cerrar sesión</a>
+
+    {% if current_user.Type=="User" %}
+        <h1>Usuario común</h1>
+    {% elif current_user.Type=="" %}
+        <h1>Administrador</h1>
+    {% endif %}
 
 {% endblock %}

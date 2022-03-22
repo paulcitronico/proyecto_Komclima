@@ -1,6 +1,7 @@
 from flask import Flask
 from routes.root import root
 from routes.auth import auth
+from routes.temperature import temperature
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from models.user import User
@@ -27,3 +28,4 @@ def unauthorized():
 
 app.register_blueprint(root)
 app.register_blueprint(auth)
+app.register_blueprint(temperature)
