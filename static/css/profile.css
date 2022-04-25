@@ -1,0 +1,139 @@
+@font-face {
+    font-family: "Poppins Regular";
+    src: url("../fonts/Poppins-Regular.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins Regular";
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f2f2f2;
+    position: relative;
+}
+
+.container {
+    max-width: 950px;
+    width: 100%;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.container .main-card {
+    width: 200%;
+    display: flex;
+    justify-content: space-evenly;
+    transition: all 1s ease;
+}
+
+#two:checked ~ .main-card {
+    margin-left: -100%;
+}
+
+.main-card .cards {
+    width: calc(100% / 2 - 10px);
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    flex-wrap: wrap;
+}
+
+.main-card .cards .card {
+    background: #fff;
+    width: calc(100% / 3 - 10px);
+    padding: 30px;
+    border-radius: 24px;
+    transition: all 0.4s ease;
+}
+
+.main-card .cards .card:hover {
+    transform: translateY(-15px);
+}
+
+.cards .card .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cards .card .content .img {
+    height: 130px;
+    width: 130px;
+    margin-bottom: 14px;
+}
+
+.cards .card .content .img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.cards .card .details .title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.button {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+
+.button label {
+    height: 15px;
+    width: 15px;
+    background: #197278;
+    margin: 0 4px;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+}
+
+.button label.active {
+    width: 35px;
+}
+
+#one:checked ~ .button label.one {
+    width: 35px;
+}
+
+#two:checked ~ .button label.two {
+    width: 35px;
+}
+
+#two:checked ~ .button label.one {
+    width: 15px;
+}
+
+#one:checked ~ .button label.two {
+    width: 15px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .main-card .cards .card {
+        width: calc(100% / 2 - 10px);
+        margin: 20px 0 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-card .cards .card {
+        width: 100%;
+    }
+}

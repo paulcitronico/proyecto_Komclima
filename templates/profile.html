@@ -4,20 +4,91 @@
 
 {% block content %} 
 
+    <!--
     <h1>Bienvenido, {{ current_user.Name }}</h1>
 
-    <a href="/logout">Cerrar sesión</a>
+    <a href="/logout">Cerrar sesión</a>-->
 
-    {% if current_user.Type=="User" %}
-        <h1>Usuario común</h1>
-        <div class="container" style="width: 500px;">
-            <canvas id="myChart" width="100" height="100"></canvas>
+    <div class="container">
+
+        <input type="radio" name="dot" id="one">
+        <input type="radio" name="dot" id="two">
+
+        <div class="main-card">
+            <div class="cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="../static/img/1.jpeg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="title">User settings</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="../static/img/1.jpeg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="title">Overview</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="../static/img/1.jpeg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="title">Service Panel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="../static/img/1.jpeg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="title">User settings</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="../static/img/1.jpeg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="title">Overview</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="content">
+                        <div class="img">
+                            <img src="../static/img/1.jpeg" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="title">Service Panel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-        <script src="../static/js/temperatura_promedio.js"></script>
-    {% elif current_user.Type=="" %}
-        <h1>Administrador</h1>
-    {% endif %}
+        <div class="button">
+            <label for="one" class="one active"></label>
+            <label for="two" class="two"></label>
+        </div>
+    </div>
 
 {% endblock %}
