@@ -1,10 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template, abort
 from routes.root import root
 from routes.auth import auth
 from routes.temperature import temperature
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from models.user import User
+from utils.error_messages import error as status_code_error
 
 app = Flask(__name__)
 login_manager = LoginManager()
@@ -24,7 +25,19 @@ def load_user(user_id):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return "No tiene permisos para acceder a esta ruta"
+    return abort(401)
+
+@app.errorhandler(401)
+def error_401_handler(e):
+    return render_template("error.html",css="css/error.css",error=status_code_error["401"]), 401
+
+@app.errorhandler(403)
+def error_401_handler(e):
+    return render_template("error.html",css="css/error.css",error=status_code_error["403"]), 403
+
+@app.errorhandler(404)
+def error_404_handler(e):
+    return render_template("error.html",css="css/error.css",error=status_code_error["404"]), 404
 
 app.register_blueprint(root)
 app.register_blueprint(auth)

@@ -3,10 +3,13 @@ from flask_login import login_required, login_user, logout_user
 from models.Forms.SignUpForm import SignUpForm
 from models.Forms.LoginForm import LoginForm
 from models.user import User
+from routes.decorator import admin_required
 
 auth = Blueprint("auth",__name__)
 
 @auth.route("/register", methods=["GET","POST"])
+@login_required
+@admin_required
 def register_user():
     form = SignUpForm()
     if request.method=="POST":
@@ -27,7 +30,7 @@ def register_user():
                 user = User(name,password,rut,email,type=type_user)
                 user.save()
                 return redirect(url_for("root.index"))
-    return render_template("register.html",css="register.css",form=form)
+    return render_template("register.html",css="css/register.css",form=form)
 
 @auth.route("/login",methods=["GET","POST"])
 def _login_user():
