@@ -3,6 +3,11 @@
     src: url("../fonts/Poppins-Regular.ttf");
 }
 
+:root {
+    --bg-navbar: #197278;
+    --bg-container: #f2f2f2;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +20,7 @@ nav {
     min-height: 60px;
     width: 100%;
     color: #fff;
-    background: #197278;
+    background: var(--bg-navbar);
     position: absolute;
     z-index: 2;
     display: flex;
@@ -25,11 +30,18 @@ nav {
 
 nav ul {
     list-style: none;
+    display: flex;
+    align-content: space-between;
+    gap: 20px;
 }
 
-nav ul li a {
+nav ul li a, nav ul li a:link {
     text-decoration: none;
     color: #fff;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
 .container {
@@ -38,6 +50,6 @@ nav ul li a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f2f2f2;
+    background: var(--bg-container);
     position: relative;
 }

@@ -47,7 +47,7 @@ def _login_user():
                 return redirect("login")
 
             login_user(user=user)
-            return redirect("profile")
+            return redirect("dashboard")
 
     return redirect(url_for("root.index"))
 

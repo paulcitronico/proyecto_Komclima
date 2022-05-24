@@ -1,6 +1,7 @@
 from flask import Flask, render_template, abort
 from routes.root import root
 from routes.auth import auth
+from routes.dashboard import dashboard
 from routes.temperature import temperature
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -32,7 +33,7 @@ def error_401_handler(e):
     return render_template("error.html",css="css/error.css",error=status_code_error["401"]), 401
 
 @app.errorhandler(403)
-def error_401_handler(e):
+def error_403_handler(e):
     return render_template("error.html",css="css/error.css",error=status_code_error["403"]), 403
 
 @app.errorhandler(404)
@@ -42,3 +43,4 @@ def error_404_handler(e):
 app.register_blueprint(root)
 app.register_blueprint(auth)
 app.register_blueprint(temperature)
+app.register_blueprint(dashboard)

@@ -7,11 +7,11 @@ root = Blueprint("root",__name__)
 @root.route("/")
 def index():
     if current_user.is_authenticated:
-        return redirect("profile")
+        return redirect("dashboard")
 
     return render_template("index.html", css="index.css", form=LoginForm())
 
-@root.route("/profile")
+@root.route("/dashboard")
 @login_required
 def profile_user():
-    return render_template("profile.html", css="css/profile.css")
+    return render_template("dashboard.html", css="css/profile.css")

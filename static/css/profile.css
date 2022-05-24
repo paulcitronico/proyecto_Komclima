@@ -37,6 +37,16 @@
     transform: translateY(-15px);
 }
 
+.cards .card a:link, .cards .card a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.cards .card a:hover, .cards .card a:active {
+    text-decoration: underline;
+    color: var(--bg-navbar);
+}
+
 .cards .card .content {
     display: flex;
     flex-direction: column;
@@ -49,6 +59,11 @@
     height: 130px;
     width: 130px;
     margin-bottom: 14px;
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 50%;
+    padding: 3px;
 }
 
 .cards .card .content .img img {
@@ -56,6 +71,8 @@
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
+    background-color: var(--bg-container);
+    border: 3px solid #fff;
 }
 
 .cards .card .details .title {
