@@ -1,0 +1,26 @@
+{% extends 'template_base.html' %}
+
+{% block title %}Mi cuenta{% endblock %}
+
+{% block content %}
+    <nav>
+        <h4>Inicio</h4>
+        <ul>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="profile-box">
+            <h3>{{ current_user.Name }}</h3>
+            <p>Email: {{ current_user.Email }}</p>
+            <p>Rut: {{ current_user.Rut }}</p>
+            <p>Rol: {{ current_user.Type }}</p>
+            <div class="settings">
+                <button class="one"><span>Nombre</span></button>
+                <button class="two"><span>Correo Electrónico</span></button>
+                <button class="three"><span>Contraseña</span></button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

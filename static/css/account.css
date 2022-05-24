@@ -1,0 +1,92 @@
+.profile-box {
+    background-color: var(--bg-navbar);
+    text-align: center;
+    padding: 40px 90px;
+    color: #fff;
+    position: relative;
+    border-radius: 20px;
+}
+
+.profile-box .settings {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 10px 20px;
+}
+
+.profile-box .settings button {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: .5s ease all;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-box .settings button:hover {
+    color: black;
+}
+
+.profile-box .settings button.one::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    top: -100%;
+    left: 0;
+    transition: .5s ease-in-out all;
+}
+
+.profile-box .settings button.one:hover::after {
+    top: 0;
+}
+
+.profile-box .settings button.two::after {
+    content: "";
+    width: 133%;
+    height: 250px;
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    left: -150%;
+    transform: rotate(-25deg);
+    transition: .5s ease-in-out all;
+}
+
+.profile-box .settings button.two:hover::after {
+    left: 0;
+}
+
+.profile-box .settings button span {
+    position: relative;
+    z-index: 2;
+    transition: .8s ease all;
+}
+
+.profile-box .settings button.three::after {
+    content: "";
+    width: 100%;
+    height: 300%;
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    top: -300%;
+    left: 0;
+    transition: .4s ease-in-out all;
+    border-radius: 0px 0px 300px 300px;
+}
+
+.profile-box .settings button.three:hover::after {
+    top: 0;
+}
