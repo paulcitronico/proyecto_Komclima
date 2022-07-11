@@ -4,6 +4,7 @@ from models.Forms.SignUpForm import SignUpForm
 from models.Forms.LoginForm import LoginForm
 from models.user import User
 from routes.decorator import admin_required
+from werkzeug.security import check_password_hash
 
 auth = Blueprint("auth",__name__)
 
@@ -42,12 +43,18 @@ def _login_user():
 
             user = User.get_by_rut(username)
 
-            if not user or not user.check_password(password):
-                flash("Usuario y/o contraseña no válida(o).")
-                return redirect("login")
-
-            login_user(user=user)
-            return redirect("dashboard")
+            if user != None:
+                print(user.Name)
+                print(user.Email)
+                print(user.Password)
+                print(check_password_hash(user.Password,password))
+            
+                if not user or check_password_hash(user.Password,password) == False:
+                    flash("Usuario y/o contraseña no válida(o).")
+                    return redirect("login")
+                else:
+                    login_user(user=user)
+                    return redirect("dashboard")
 
     return redirect(url_for("root.index"))
 

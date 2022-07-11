@@ -36,7 +36,7 @@ class User(db.Model,UserMixin):
         return User.query.filter_by(Email=email).first()
 
     def set_password(self,password):
-        self.password = generate_password_hash(password)
+        self.Password = generate_password_hash(password)
 
     def check_password(self,password):
         return check_password_hash(self.Password,password)
