@@ -1,0 +1,17 @@
+.back {
+    font-size: 20px;
+    position: absolute;
+    z-index: 4;
+    left: 2.5%;
+    top: 3%;
+}
+
+.back a {
+    color: var(--bg-navbar);
+    text-decoration: none;
+}
+
+.back a:hover {
+    color: var(--bg-navbar);
+    text-decoration: underline;
+}
