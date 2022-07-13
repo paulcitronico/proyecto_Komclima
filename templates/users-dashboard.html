@@ -1,0 +1,137 @@
+{% extends 'template_base.html' %}
+
+{% block title %}Gestión de usuarios{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="users"></tbody>
+    </table>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Datos personales</p>
+        <hr />
+
+        <div class="input-group">
+            <input type="number" id="uid" class="input" disabled>
+            <label for="uid" class="input-label">Identificador</label>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="name" class="input" disabled>
+            <label for="name" class="input-label">Nombre y/o Apellido</label>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="rut" class="input" disabled>
+            <label for="rut" class="input-label">RUT</label>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" class="input" disabled>
+            <label for="email" class="input-label">Correo electrónico</label>
+        </div>
+
+        <div class="input-group">
+            <select id="user_rol" class="input" required>
+                <option value="User">User</option>
+                <option value="admin">admin</option>
+                <option value="Superadmin">Superadmin</option>
+            </select>
+            <label for="user_rol" class="input-label">Seleccione un rol</label>
+        </div>
+
+        <div class="actions">
+            <button class="btn three" id="update-rol"><span>Actualizar Rol</span></button>
+            <button class="btn four" id="delete-user"><span>Eliminar Usuario</span></button>
+        </div>
+    
+    </div>
+</div>
+
+<script defer>
+    {
+        let table_body = document.getElementById("users")
+        let modal = document.getElementById("modal")
+        const close = document.querySelector(".close")
+        
+        let email, name, uid, rut, user_rol
+
+        function update_user(id) {
+            modal.style.display = "flex"
+            modal.style.overflow = "hidden"
+            modal.style.alignItems = "center"
+            modal.style.justifyContent = "center"
+            email = document.getElementById("email")
+            name = document.getElementById("name")
+            uid = document.getElementById("uid")
+            rut = document.getElementById("rut")
+            user_rol = document.getElementById("user_rol")
+
+            fetch("/get-user",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain"
+                },
+                body: id
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.error === false) {
+                    uid.value = data.id
+                    name.value = data.name
+                    email.value = data.email
+                    rut.value = data.rut
+                    user_rol.value = data.rol
+                } else {
+                    modal.style.display = "none"
+                    Swal.fire({
+                        icon: "error",
+                        text: data.message
+                    })
+                }
+            })
+        }
+
+        close.addEventListener("click", () => {
+            modal.style.display = "none"
+        })
+
+        fetch("/get-users")
+        .then(res => res.json())
+        .then(data => {
+            let template = ``
+            data.forEach(element => {
+                template += `
+                    <tr>
+                        <td>${element.id}</td>
+                        <td>${element.name}</td>
+                        <td>${element.rut}</td>
+                        <td>${element.email}</td>
+                        <td>${element.rol}</td>
+                        <td>
+                            <button class="user-watch" onclick="update_user(${element.id})">Ver</button>
+                        </td>
+                    </tr>
+                `
+            })
+            table_body.innerHTML = template
+        })
+    }
+</script>
+
+{% endblock %}
