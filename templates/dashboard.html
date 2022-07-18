@@ -1,0 +1,115 @@
+{% extends 'template_base.html' %}
+
+{% block title %}Demo{% endblock %}
+
+{% block content %} 
+
+    <nav>
+        <h4>¡Bienvenido, {{ current_user.Name }}!</h4>
+        <ul>
+            <li><a href="/account">Mi cuenta</a></li>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="cards-container">
+
+            <input type="radio" name="dot" id="one">
+            <input type="radio" name="dot" id="two">
+    
+            <div class="main-card">
+                <div class="cards">
+                    <div class="card">
+                        <a href="/user-settings">
+                            <div class="content">
+                                <div class="img">
+                                    <img src="../static/img/profile.svg" alt="">
+                                </div>
+                                <div class="details">
+                                    <h1 class="title">Ajustes de usuario</h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="card">
+                        <a href="/overview">
+                            <div class="content">
+                                <div class="img">
+                                    <img src="../static/img/overview.svg" alt="">
+                                </div>
+                                <div class="details">
+                                    <h1 class="title">Visión general</h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="card">
+                        <a href="/service-panel">
+                            <div class="content">
+                                <div class="img">
+                                    <img src="../static/img/service-panel.svg" alt="">
+                                </div>
+                                <div class="details">
+                                    <h1 class="title">Panel de servicio</h1>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="cards">
+                    <!--
+                    <div class="card">
+                        <a href="/temperature">
+                            <div class="content">
+                                <div class="img">
+                                    <img src="../static/img/temperature.svg" alt="">
+                                </div>
+                                <div class="details">
+                                    <div class="title">Temperatura promedio</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    -->
+    
+                    <div class="card">
+                        <a href="/register">
+                            <div class="content">
+                                <div class="img">
+                                    <img src="../static/img/add_user.svg" alt="">
+                                </div>
+                                <div class="details">
+                                    <div class="title">Registro de usuarios</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="card">
+                        <a href="/users">
+                            <div class="content">
+                                <div class="img">
+                                    <img src="../static/img/users.svg" alt="">
+                                </div>
+                                <div class="details">
+                                    <div class="title">Gestión de usuarios</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="button">
+                <label for="one" class="one active"></label>
+                <label for="two" class="two"></label>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

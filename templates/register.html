@@ -3,7 +3,15 @@
 {% block title %}Registrar{% endblock %}
 
 {% block content %}
-    <section>
+
+    <nav>
+        <h4><a href="/dashboard">Inicio</a></h4>
+        <ul>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <section class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification">
@@ -13,22 +21,29 @@
         {% endwith %}
         <form action="/register" method="post">
             {{ form.hidden_tag() }}
-            <div class="formItem">
-                {{ form.name(placeholder="Ingrese su nombre") }}
+            <div class="input-group">
+                {{ form.name(class="input") }}
+                <label for="name" class="input-label">Ingrese su nombre</label>
             </div>
-            <div class="formItem">
-                {{ form.password(placeholder="****") }}
+            <div class="input-group">
+                {{ form.password(class="input") }}
+                <label for="password" class="input-label">Ingrese una contraseña</label>
             </div>
-            <div class="formItem">
-                {{ form.rut(placeholder="Ingrese su rut") }}
+            <div class="input-group">
+                {{ form.rut(class="input") }}
+                <label for="Rut" class="input-label">Ingrese su rut</label>
             </div>
-            <div class="formItem">
-                {{ form.email(placeholder="Ingrese su correo") }}
+            <div class="input-group">
+                {{ form.email(class="input") }}
+                <label for="email" class="input-label">Ingrese su correo</label>
             </div>
-            <div class="formItem">
-                {{ form.type_user }}
+            <div class="input-group">
+                {{ form.type_user(class="input") }}
+                <label for="user_rol" class="input-label">Seleccione un rol</label>
             </div>
-            {{ form.submit() }}
+            <button type="submit" class="btn-p one">
+                <span>Registrar</span>
+            </button>
         </form>
     </section>
 {% endblock %}

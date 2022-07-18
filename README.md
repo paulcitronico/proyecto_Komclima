@@ -12,10 +12,11 @@ pip install -r requirements.txt
 
 # RUTAS
 
-| Método | Ruta | Descripción |
-| --- | --- | --- |
-| GET | / | Redirige a la vista principal de la aplicación. |
-| GET | /register | Redirige a una vista de registro de usuarios. |
-| POST | /register | Valida los datos del formulario verificando que el correo y el rut no existan en la base de datos. |
-| GET | /login | Redirige a la vista con el formulario de autenticación. |
-| POST | /login | Permite autenticar al usuario. |
+| Método | Ruta | Descripción | Autenticación | Rol requerido |
+| --- | --- | --- | --- | --- |
+| GET | / | Redirige a la vista principal de la aplicación. | False | --- |
+| GET | /register | Redirige a una vista de registro de usuarios. | True | Admin |
+| POST | /register | Valida los datos del formulario verificando que el correo y el rut no existan en la base de datos. | True | Admin |
+| GET | /login | Redirige a la vista con el formulario de autenticación. | False | --- |
+| POST | /login | Permite autenticar al usuario. | False | --- |
+| GET | /dashboard | Dashboard para el usuario autenticado. | True | --- |

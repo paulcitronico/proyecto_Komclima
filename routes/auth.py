@@ -3,10 +3,14 @@ from flask_login import login_required, login_user, logout_user
 from models.Forms.SignUpForm import SignUpForm
 from models.Forms.LoginForm import LoginForm
 from models.user import User
+from routes.decorator import admin_required
+from werkzeug.security import check_password_hash
 
 auth = Blueprint("auth",__name__)
 
 @auth.route("/register", methods=["GET","POST"])
+@login_required
+@admin_required
 def register_user():
     form = SignUpForm()
     if request.method=="POST":
@@ -27,7 +31,7 @@ def register_user():
                 user = User(name,password,rut,email,type=type_user)
                 user.save()
                 return redirect(url_for("root.index"))
-    return render_template("register.html",css="register.css",form=form)
+    return render_template("register.html",css="css/register.css",form=form)
 
 @auth.route("/login",methods=["GET","POST"])
 def _login_user():
@@ -39,12 +43,18 @@ def _login_user():
 
             user = User.get_by_rut(username)
 
-            if not user or not user.check_password(password):
-                flash("Usuario y/o contraseña no válida(o).")
-                return redirect("login")
-
-            login_user(user=user)
-            return redirect("profile")
+            if user != None:
+                print(user.Name)
+                print(user.Email)
+                print(user.Password)
+                print(check_password_hash(user.Password,password))
+            
+                if not user or check_password_hash(user.Password,password) == False:
+                    flash("Usuario y/o contraseña no válida(o).")
+                    return redirect("login")
+                else:
+                    login_user(user=user)
+                    return redirect("dashboard")
 
     return redirect(url_for("root.index"))
 

@@ -7,5 +7,4 @@ class SignUpForm(FlaskForm):
     password = PasswordField("password", validators=[DataRequired()])
     rut = StringField("Rut", validators=[DataRequired()])
     email = EmailField("email", validators=[DataRequired()])
-    type_user = SelectField("Tipo de usuario", validators=[DataRequired()], choices=["User"])
-    submit = SubmitField("Registrar")
+    type_user = SelectField("user_rol", validators=[DataRequired()], choices=["User","admin","Superadmin"])

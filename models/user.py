@@ -22,6 +22,7 @@ class User(db.Model,UserMixin):
         if not self.id:
             db.session.add(self)
         db.session.commit()
+        db.session.flush()
 
     @staticmethod
     def get_by_id(id):
@@ -35,8 +36,13 @@ class User(db.Model,UserMixin):
     def get_by_email(email):
         return User.query.filter_by(Email=email).first()
 
+    def delete_user(self):
+        db.session.delete(self)
+        db.session.commit()
+        db.session.flush()
+
     def set_password(self,password):
-        self.password = generate_password_hash(password)
+        self.Password = generate_password_hash(password)
 
     def check_password(self,password):
         return check_password_hash(self.Password,password)

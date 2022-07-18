@@ -1,0 +1,13 @@
+{% extends 'template_base.html' %}
+
+{% block title %}{{ error["title"] }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="bg">
+        <img src='{{ error["img"] }}' alt="Error 401">
+    </div>
+    {{ error["message"] }}
+    <a href="/">Volver a inicio</a>
+</div>
+{% endblock %}

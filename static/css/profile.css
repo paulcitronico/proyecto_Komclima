@@ -1,0 +1,139 @@
+/**/
+.cards-container {
+    max-width: 950px;
+    width: 100%;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.cards-container .main-card {
+    width: 200%;
+    display: flex;
+    justify-content: space-evenly;
+    transition: all 1s ease;
+}
+
+#two:checked ~ .main-card {
+    margin-left: -100%;
+}
+
+.main-card .cards {
+    width: calc(100% / 2 - 10px);
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 20px;
+    flex-wrap: wrap;
+}
+
+.main-card .cards .card {
+    background: #fff;
+    width: calc(100% / 3 - 10px);
+    padding: 30px;
+    border-radius: 24px;
+    transition: all 0.4s ease;
+}
+
+.main-card .cards .card:hover {
+    transform: translateY(-15px);
+}
+
+.cards .card a:link, .cards .card a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.cards .card a:hover, .cards .card a:active {
+    text-decoration: underline;
+    color: var(--bg-navbar);
+}
+
+.cards .card .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cards .card .content .img {
+    height: 130px;
+    width: 130px;
+    margin-bottom: 14px;
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.cards .card .content .img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: var(--bg-container);
+    border: 3px solid #fff;
+}
+
+.cards .card .details .title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.button {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+
+.button label {
+    height: 15px;
+    width: 15px;
+    background: #197278;
+    margin: 0 4px;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+}
+
+.button label.active {
+    width: 35px;
+}
+
+#one:checked ~ .button label.one {
+    width: 35px;
+}
+
+#two:checked ~ .button label.two {
+    width: 35px;
+}
+
+#two:checked ~ .button label.one {
+    width: 15px;
+}
+
+#one:checked ~ .button label.two {
+    width: 15px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .main-card .cards .card {
+        width: calc(100% / 2 - 10px);
+        margin: 20px 0 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        justify-content: space-evenly;
+    }
+
+    .main-card .cards .card {
+        width: 100%;
+    }
+}

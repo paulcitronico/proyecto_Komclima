@@ -1,0 +1,72 @@
+{% extends 'template_base.html' %}
+
+{% block title %}Mi cuenta{% endblock %}
+
+{% block content %}
+    <nav>
+        <h4><a href="/dashboard">Inicio</a></h4>
+        <ul>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="profile-box">
+            <h3>{{ current_user.Name }}</h3>
+            <p>Email: {{ current_user.Email }}</p>
+            <p>Rut: {{ current_user.Rut }}</p>
+            <p>Rol: {{ current_user.Type }}</p>
+            <div class="settings">
+                <button class="one"><span>Nombre</span></button>
+                <button class="two"><span>Correo Electrónico</span></button>
+                <button class="three"><span>Contraseña</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="name" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Actualizar nombre.</p>
+            <hr />
+            <div class="input-group">
+                <input type="text" id="update-name" class="input" required>
+                <label for="update-name" class="input-label">Nuevo nombre</label>
+            </div>
+            <button class="btn one" id="name-btn"><span>Actualizar</span></button>
+        </div>
+    </div>
+
+    <div id="email" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Actualizar correo electrónico.</p>
+            <hr />
+            <div class="input-group">
+                <input type="email" id="update-email" class="input" required>
+                <label for="update-email" class="input-label">Nuevo correo</label>
+            </div>
+            <button class="btn two" id="email-btn"><span>Actualizar</span></button>
+        </div>
+    </div>
+
+    <div id="password" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Actualizar contraseña.</p>
+            <hr />
+            <div class="input-group">
+                <input type="password" id="current-password" class="input" required>
+                <label for="current-password" class="input-label">Contraseña actual</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="new-password" class="input" required>
+                <label for="new-password" class="input-label">Nueva contraseña</label>
+            </div>
+            <button class="btn three" id="update-password"><span>Actualizar</span></button>
+        </div>
+    </div>
+
+    <script defer src="../static/js/account.js"></script>
+
+{% endblock %}

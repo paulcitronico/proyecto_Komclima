@@ -1,0 +1,15 @@
+.container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.container .bg {
+    width: 30%;
+    height: 30%;
+}
+
+.container .bg img {
+    width: 100%;
+    height: auto;
+}
