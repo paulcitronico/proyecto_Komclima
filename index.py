@@ -9,4 +9,4 @@ def shutdown_session(exc=None):
     db.session.remove()
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

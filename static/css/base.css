@@ -35,12 +35,12 @@ nav ul {
     gap: 20px;
 }
 
-nav ul li a, nav ul li a:link {
+nav ul li a, nav ul li a:link, nav h4 a, nav h4 a:link {
     text-decoration: none;
     color: #fff;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav h4 a:hover {
     text-decoration: underline;
 }
 

@@ -2,7 +2,6 @@ from flask import Flask, render_template, abort
 from routes.root import root
 from routes.auth import auth
 from routes.dashboard import dashboard
-from routes.temperature import temperature
 from routes.user_settings import user_settings
 from routes.users_manager import users_manager
 from flask_sqlalchemy import SQLAlchemy
@@ -44,7 +43,6 @@ def error_404_handler(e):
 
 app.register_blueprint(root)
 app.register_blueprint(auth)
-app.register_blueprint(temperature)
 app.register_blueprint(dashboard)
 app.register_blueprint(user_settings)
 app.register_blueprint(users_manager)

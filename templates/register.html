@@ -4,7 +4,12 @@
 
 {% block content %}
 
-    <span class="back"><a href="/">&crarr; Regresar</a></span>
+    <nav>
+        <h4><a href="/dashboard">Inicio</a></h4>
+        <ul>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    </nav>
 
     <section class="container">
         {% with messages = get_flashed_messages() %}
