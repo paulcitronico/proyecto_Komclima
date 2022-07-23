@@ -7,6 +7,10 @@ dashboard = Blueprint("dashboard",__name__)
 # Ajustes del usuario
 
 # Visión general
+@dashboard.route("/overview")
+@login_required
+def overview():
+    return render_template("overview.html")
 
 # Panel de servicio
 
