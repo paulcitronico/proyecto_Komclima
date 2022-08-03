@@ -3,14 +3,14 @@ from flask_login import login_required, login_user, logout_user
 from models.Forms.SignUpForm import SignUpForm
 from models.Forms.LoginForm import LoginForm
 from models.user import User
-from routes.decorator import admin_required
+from routes.decorator import admin_required,role_required
 from werkzeug.security import check_password_hash
 
 auth = Blueprint("auth",__name__)
 
 @auth.route("/register", methods=["GET","POST"])
 @login_required
-@admin_required
+@role_required(role=["admin","Superadmin"])
 def register_user():
     form = SignUpForm()
     if request.method=="POST":

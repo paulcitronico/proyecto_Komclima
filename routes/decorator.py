@@ -34,3 +34,14 @@ def user_required(f):
             return abort(403)
         return f(*args,**kws)
     return decorated_function
+
+def role_required(role=[]):
+    def wrapper(f):
+        #wraps(f)
+        def wrapper2(*args, **kwargs):
+            is_user = getattr(current_user,"Type")
+            if is_user not in role:
+                return abort(403)
+            return f(*args,**kwargs)
+        return wrapper2
+    return wrapper

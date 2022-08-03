@@ -214,7 +214,7 @@ nav ul li a:hover, nav h4 a:hover {
     color: var(--bg-navbar);
 }
 
-.input:focus+.input-label, .input:valid+.input-label, input:disabled+.input-label {
+.input:focus+.input-label, .input:valid+.input-label, input:disabled+.input-label, .input::placeholder {
     transform: translate(0px,-14px) scale(.8);
     padding-inline: 5px;
     background-color: var(--bg-navbar);
@@ -267,4 +267,20 @@ nav ul li a:hover, nav h4 a:hover {
 .content-table tbody tr.active-row {
     font-weight: bold;
     color: var(--bg-navbar);
+}
+
+.input-group-2 {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+.sub-input-group {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
 }
