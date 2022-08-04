@@ -1,4 +1,5 @@
 click==8.0.4
+colorama==0.4.5
 Flask==2.0.3
 Flask-Login==0.5.0
 Flask-SQLAlchemy==2.5.1
@@ -8,6 +9,7 @@ itsdangerous==2.1.0
 Jinja2==3.0.3
 MarkupSafe==2.1.0
 mysqlclient==2.1.0
+python-dotenv==0.20.0
 SQLAlchemy==1.4.31
 Werkzeug==2.0.3
 WTForms==3.0.1

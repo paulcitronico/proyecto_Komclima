@@ -9,6 +9,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from models.user import User
 from utils.error_messages import error as status_code_error
+from dotenv import dotenv_values
+
+config = dotenv_values(".env")
 
 app = Flask(__name__)
 login_manager = LoginManager()
@@ -16,7 +19,7 @@ login_manager.login_view = "root.index"
 login_manager.login_message = "Para acceder a esta ruta, necesita autenticarse."
 
 app.config["SECRET_KEY"] = "xjhUgSDQd02ceb4PY3CZ"
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://{}:{}@{}/{}".format("admin","administrador","localhost","komclima")
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://{}:{}@{}/{}".format(config["DB_USERNAME"],config["DB_PASSWORD"],config["DB_URL"],config["DB_NAME"])
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 login_manager.init_app(app)
