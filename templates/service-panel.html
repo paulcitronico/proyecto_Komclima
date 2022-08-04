@@ -1,0 +1,59 @@
+{% extends 'template_base.html' %}
+
+{% block title %}Panel de servicio{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div>
+        <div class="input-group-2">
+            <label>Temperatura</label>
+            <div class="sub-input-group">
+                <div class="input-group">
+                    <input type="number" id="t-min" class="input" required>
+                    <label for="t-min" class="input-label">Mínimo</label>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="t-max" class="input" required>
+                    <label for="t-max" class="input-label">Máximo</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group-2">
+            <label>Humedad</label>
+            <div class="sub-input-group">
+                <div class="input-group">
+                    <input type="number" id="h-min" class="input" required>
+                    <label for="h-min" class="input-label">Mínimo</label>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="h-max" class="input" required>
+                    <label for="h-max" class="input-label">Máximo</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group-2">
+            <label>CO2</label>
+            <div class="sub-input-group">
+                <div class="input-group">
+                    <input type="number" id="c-min" class="input" required>
+                    <label for="c-min" class="input-label">Mínimo</label>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="c-max" class="input" required>
+                    <label for="c-max" class="input-label">Máximo</label>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn-p one" id="send">
+            <span>Registrar</span>
+        </button>
+    </div>
+</div>
+
+<script defer src="../static/js/service-panel.js"></script>
+
+{% endblock %}
